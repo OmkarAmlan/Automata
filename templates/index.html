@@ -12,6 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         {% load static %}
         <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+        <script src="{% static 'myfirst.js' %}"></script>
     </head>
     <body style="background-color: rgba(35,39,42)">
         <div class="header">
@@ -19,7 +20,7 @@
         </div>
 
         <div class="area" >
-            <div class="card">
+            <div class="card1">
                 <img src="" alt="Card Image" class="card-image">
                 <h2 class="card-title">Card Title</h2>
                 <p class="card-description">This is a sample card description.</p>
@@ -44,12 +45,17 @@
                     Itaque illo perferendis qui, repudiandae aliquam neque autem expedita sed suscipit cum mollitia velit nostrum quam, provident delectus corrupti a fuga, enim quasi dolor rerum mollitia corporis dolore aliquid distinctio laboriosam. Architecto numquam animi? Itaque illo perferendis qui, repudiandae aliquam neque autem expedita sed suscipit cum mollitia velit nostrum quam, provident delectus corrupti a fuga, enim quasi dolor rerum mollitia corporis dolore aliquid distinctio laboriosam. Architecto numquam animi?
                 </p>
             </div>
+
             <div class="card2">
                 <img src="" alt="Card Image" class="card-image">
                 <h2 class="card-title">Card Title</h2>
                 <p class="card-description">This is a sample card description.</p>
                 <a href="#" class="card-button">Learn More</a>
             </div>
+
+            {% comment %} carousel refernced {% endcomment %}
+            
+
             <footer class="footer">
                 <div class="waves">
                   <div class="wave" id="wave1"></div>

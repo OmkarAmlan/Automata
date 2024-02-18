@@ -62,7 +62,6 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: 3;
 }
 
 .circles li{
@@ -74,7 +73,6 @@
     background: rgba(255, 255, 255, 0.2);
     animation: animate2 15s linear infinite;
     bottom: -150px;
-    z-index: 3;
 }
 
 .circles li:nth-child(1){
@@ -171,7 +169,7 @@
 
 }
 
-.card {
+.card1 {
   background-color: rgb(35,39,42);
   border-radius: 20px;
   padding: 20px;
@@ -225,7 +223,7 @@
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -381,3 +379,4 @@
     background-positon-x: 0px;
   }
 }
+
