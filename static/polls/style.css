@@ -191,6 +191,21 @@
   left: 68%;
 }
 
+.card2-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.csv-display {
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
+  padding: 20px;
+  width: 50%; /* Adjust the width as needed */
+  height: 450px; /* Adjust the height as needed */
+}
+
 .card-image {
   width: 100%; /* Adjust the width as needed */
   border-top-left-radius: 8px;
