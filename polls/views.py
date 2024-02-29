@@ -17,6 +17,6 @@ def handle_csv_upload(request):
 
         csv_data = csv_file.read().decode('utf-8')
         df = pd.read_csv(io.StringIO(csv_data))
-        return HttpResponse('CSV file uploaded successfully!')
+        return render(request,'upload.html')
     else:
         return HttpResponse('Invalid request.')
