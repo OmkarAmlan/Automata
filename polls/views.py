@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 import csv
 import pandas as pd
 import io 
@@ -13,8 +13,13 @@ import tempfile
 from fastapi import FastAPI
 import uvicorn
 from pydantic import BaseModel
+from django.middleware.csrf import get_token
 
 app=FastAPI()
+
+def get_csrf_token(request):
+    csrf_token=get_token(request)
+    return JsonResponse({'csrfToken':csrf_token})
 
 def remove_percent_symbol(entry):
     if isinstance(entry, str) and '%' in entry:

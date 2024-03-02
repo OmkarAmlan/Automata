@@ -1,32 +1,47 @@
 import logo from "./logo.svg";
 import "./App.css";
+import { useState, useEffect } from "react";
 import robo from "./assets/IMG_2740-ai-brush-removebg-dfi3huke.png";
+const App = () => {
+  const [csrfToken, setCsrfToken] = useState("");
 
-const htmlFile = `
-<div class="card2">
-<img src="" alt="Card Image" class="card-image" />
-<h2 class="card-title">Card Title</h2>
-<p class="card-description">This is a sample card description.</p>
-<br />
-<form
-  method="post"
-  action="{% url 'handle_pkl_upload' %}"
-  enctype="multipart/form-data"
->
-  {% csrf_token %}
-  <input
-    type="file"
-    name="pklFile"
-    accept=".pkl"
-    id="csv-dropzone"
-    class="csv-button"
-  />
-  <button type="submit">Upload CSV</button>
-</form>
-</div>
-`;
+  useEffect(() => {
+    const fetchCsrfToken = async () => {
+      try {
+        const response = await fetch("/get_csrf_token/");
+        const data = await response.json();
+        setCsrfToken(data.csrfToken);
+      } catch (error) {
+        console.error("Error fetching CSRF token:", error);
+      }
+    };
 
-function App() {
+    fetchCsrfToken();
+  }, []);
+
+  const htmlFile = `
+    <div class="card2">
+      <img src="" alt="Card Image" class="card-image" />
+      <h2 class="card-title">Card Title</h2>
+      <p class="card-description">This is a sample card description.</p>
+      <br />
+      <form
+        method="post"
+        action="/handle_pkl_upload/"
+        enctype="multipart/form-data"
+      >
+        <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}" />
+        <input
+          type="file"
+          name="pklFile"
+          accept=".pkl"
+          id="csv-dropzone"
+          class="csv-button"
+        />
+        <button type="submit">Upload CSV</button>
+      </form>
+    </div>
+  `;
   return (
     <div class="bodyy">
       <div class="header">
@@ -130,6 +145,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
