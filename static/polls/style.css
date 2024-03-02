@@ -394,4 +394,21 @@
     background-positon-x: 0px;
   }
 }
-
+.upload-title{
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+table, th, td {
+    border: 1px solid black;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+}

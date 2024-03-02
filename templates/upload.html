@@ -13,11 +13,107 @@
         {% load static %}
         <link rel="stylesheet" href="{% static 'polls/style.css' %}">
         <script src="{% static 'script.js' %}"></script>
+        <style>
+          .table-display{
+            position: relative;
+            top: 12rem;
+          }
+          .header-upload {
+            width: 80%;
+            margin: 0 auto;
+        }
+        
+        .upload-title {
+            color: #fff; /* White text color */
+            display: flex;
+            justify-content: center;
+            margin-bottom:15px;
+            font-family: 'Courier New', Courier, monospace;
+
+        }
+        
+        table {
+            width: 90%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background-color: #fff; /* Background color for the table */
+        }
+        
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f4f4f4;
+        }
+        
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        tbody tr:hover {
+            background-color: #e0e0e0;
+        }
+        
+        tbody tr:hover td {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dropdown-df{
+          position: relative;
+          display: flex;
+          justify-content: center;
+          top: 15rem;
+          color: #fff;
+        }
+        </style>
     </head>
     <body style="background-color: rgba(35,39,42)">
         <div class="header">
             <h1>Automata</h1>
         </div>
+
+        {% comment %}  {% endcomment %}
+        <div class="table-display">
+        <h2 class="upload-title">Uploaded CSV Data</h2>
+        <div class="header-upload"style="height: 400px; overflow-y: auto;">
+          <table>
+              <thead>
+                  <tr>
+                      {% for column in df_limited.columns %}
+                          <th>{{ column }}</th>
+                      {% endfor %}
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for index, row in df_limited.iterrows %}
+                      <tr>
+                          {% for value in row %}
+                              <td>{{ value }}</td>
+                          {% endfor %}
+                      </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+      </div>
+    </div>
+        {% comment %}  {% endcomment %}
+      
+        <form action="{% url 'handle_dropdown' %}" method="post" class="dropdown-df">
+            {% csrf_token %}
+
+            <label for="dropdown">Select a Column:</label>
+            <select id="dropdown" name="selectedColumn">
+                {% for column in df.columns %}
+                    <option value="{{ column }}">{{ column }}</option>
+                {% endfor %}
+            </select>
+          </select>
+      
+          <button type="submit">Submit</button>
+      </form>
+
 
         <footer class="footer">
             <div class="waves">
