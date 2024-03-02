@@ -1,0 +1,46 @@
+<mxfile host="65bd71144e">
+    <diagram id="0qMgvlN9TcKUzhWMeGS6" name="Page-1">
+        <mxGraphModel dx="780" dy="457" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="13" style="edgeStyle=orthogonalEdgeStyle;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontColor=#d1e0f6;" edge="1" parent="1" source="14" target="16">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="&lt;h1 style=&quot;font-size: 14px;&quot;&gt;AUTOMATED MACHINE LEARNING&lt;/h1&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;gradientColor=#41afe6;strokeColor=#6c8ebf;fontStyle=1;fontSize=14;fontColor=#050505;" vertex="1" parent="1">
+                    <mxGeometry x="230" y="50" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=#050505;" edge="1" parent="1" source="16" target="20">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="&lt;b style=&quot;font-size: 15px;&quot;&gt;Pass a custom data set&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fontColor=#0d0d0d;fillColor=#dae8fc;gradientColor=#41afe6;strokeColor=#6c8ebf;fontFamily=Helvetica;" vertex="1" parent="1">
+                    <mxGeometry y="180" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" style="edgeStyle=none;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=#050505;" edge="1" parent="1" source="18" target="22">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="Train a machine learning model" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fontColor=#080808;fillColor=#dae8fc;gradientColor=#41afe6;strokeColor=#6c8ebf;fontStyle=1;fontSize=15;" vertex="1" parent="1">
+                    <mxGeometry x="460" y="180" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=12;fontColor=#050505;" edge="1" parent="1" source="20" target="18">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="Perform automated data profiling" style="whiteSpace=wrap;html=1;rounded=1;strokeColor=#6c8ebf;fontFamily=Helvetica;fontSize=15;fontColor=#050505;fillColor=#dae8fc;gradientColor=#41afe6;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="230" y="180" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="" style="edgeStyle=none;html=1;fontFamily=Helvetica;fontSize=12;fontColor=#050505;" edge="1" parent="1" source="22" target="23">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="22" value="Gives an API end point" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fontFamily=Helvetica;fontSize=15;fontColor=#050505;fillColor=#dae8fc;gradientColor=#41afe6;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="460" y="320" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="Ready to use" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fontFamily=Helvetica;fontSize=15;fontColor=#050505;fillColor=#dae8fc;gradientColor=#41afe6;fontStyle=1" vertex="1" parent="1">
+                    <mxGeometry x="230" y="320" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" value="" style="shape=actor;whiteSpace=wrap;html=1;rounded=1;strokeColor=#6c8ebf;fontFamily=Helvetica;fontSize=12;fontColor=#050505;fillColor=#72A6DF;gradientColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="140" width="30" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
