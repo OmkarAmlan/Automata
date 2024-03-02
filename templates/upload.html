@@ -75,44 +75,10 @@
         </div>
 
         {% comment %}  {% endcomment %}
-        <div class="table-display">
-        <h2 class="upload-title">Uploaded CSV Data</h2>
-        <div class="header-upload"style="height: 400px; overflow-y: auto;">
-          <table>
-              <thead>
-                  <tr>
-                      {% for column in df_limited.columns %}
-                          <th>{{ column }}</th>
-                      {% endfor %}
-                  </tr>
-              </thead>
-              <tbody>
-                  {% for index, row in df_limited.iterrows %}
-                      <tr>
-                          {% for value in row %}
-                              <td>{{ value }}</td>
-                          {% endfor %}
-                      </tr>
-                  {% endfor %}
-              </tbody>
-          </table>
-      </div>
-    </div>
+        
         {% comment %}  {% endcomment %}
       
-        <form action="{% url 'handle_dropdown' %}" method="post" class="dropdown-df">
-            {% csrf_token %}
-
-            <label for="dropdown">Select a Column:</label>
-            <select id="dropdown" name="selectedColumn">
-                {% for column in df.columns %}
-                    <option value="{{ column }}">{{ column }}</option>
-                {% endfor %}
-            </select>
-          </select>
       
-          <button type="submit">Submit</button>
-      </form>
 
 
         <footer class="footer">

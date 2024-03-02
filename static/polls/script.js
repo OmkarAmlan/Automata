@@ -15,7 +15,7 @@ const csvDropzone = document.getElementById("csv-dropzone");
         event.preventDefault();
         csvDropzone.classList.remove("dragover");
         const csvFile = event.dataTransfer.files[0];
-        handleCsvFile(csvFile);
+        handlePklFile(csvFile);
     });
 
     function browseFiles() {
@@ -24,14 +24,14 @@ const csvDropzone = document.getElementById("csv-dropzone");
 
     csvFileInput.addEventListener("change", function () {
         const csvFile = csvFileInput.files[0];
-        handleCsvFile(csvFile);
+        handlePklFile(csvFile);
     });
 
-    function handleCsvFile(file) {
-        if (file.type === "text/csv" || file.type === "application/vnd.ms-excel") {
-            alert("CSV file has been selected");
+    function handlePklFile(file) {
+        if (file.name.endsWith(".pkl")) {
+            alert("Pickle file has been selected");
             // Additional logic if needed
         } else {
-            alert("Please select a CSV file.");
+            alert("Please select a .pkl file.");
         }
     }

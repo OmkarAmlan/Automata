@@ -2,38 +2,44 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import csv
 import pandas as pd
-import io
+import io 
+import pycaret.regression as pr
+import pycaret.classification as pc
+import pickle
 
-# Create your views here.
+def remove_percent_symbol(entry):
+    if isinstance(entry, str) and '%' in entry:
+        valid_entries = entry.rstrip('%')
+        if valid_entries.isdigit():
+            return int(valid_entries)
+    return entry
+
+def remove_currency_symbol(entry):
+    if isinstance(entry, str) and entry.startswith('$'):
+        valid_entries = entry[1:]
+        if valid_entries.isdigit():
+            return int(valid_entries)
+    return entry
+
+def remove_symbols_from_all_columns(df):
+    df = df.applymap(remove_percent_symbol).applymap(remove_currency_symbol)
+
+    # Convert categorical columns to numeric
+    for col in df.select_dtypes(include='category').columns:
+        df[col] = pd.to_numeric(df[col], errors='coerce')
+
+    return df
 def index(request):
     return render(request,'index.html')
 
-def handle_csv_upload(request):
-    if request.method == 'POST' and request.FILES['csvFile']:
-        csv_file = request.FILES['csvFile']
-        csv_data = csv_file.read().decode('utf-8')
-        df = pd.read_csv(io.StringIO(csv_data))
-        df_limited = df.head(100)
+def handle_pkl_upload(request):
+    if request.method == 'POST' and request.FILES['pklFile']:
+        pkl_file = request.FILES['pklFile']
         context={
-            'df': df,
-            'df_limited': df_limited,
+            'pkl_file': pkl_file,
         }
-        request.session['df'] = df.to_json(orient='records')
-        request.session['df_limited'] = df_limited.to_json(orient='records')
+        
         return render(request,'upload.html',context=context)
     else:
         return HttpResponse('Invalid request.')
 
-def handle_dropdown(request):
-    df_json = request.session.get('df')
-    df_limited_json = request.session.get('df_limited')
-    df = pd.read_json(df_json)
-    df_limited = pd.read_json(df_limited_json)
-    if request.method == 'POST':
-        selected_column=request.POST.get('selectedColumn', '')
-        context={
-            'df': df,
-            'df_limited': df_limited,
-            'selected_column':selected_column,
-        }
-        return render(request,'get_column.html',context=context)
