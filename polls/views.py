@@ -3,9 +3,9 @@ from django.http import HttpResponse
 import csv
 import pandas as pd
 import io 
-import pycaret.regression as pr
+# import pycaret.regression as pr
 import os
-import pycaret.classification as pc
+# import pycaret.classification as pc
 import pickle
 import sklearn
 from sklearn.base import is_classifier, is_regressor
