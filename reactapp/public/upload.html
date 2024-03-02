@@ -11,71 +11,38 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     {% load static %}
-    <link rel="stylesheet" href="{% static 'polls/style.css' %}" />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
     <script src="{% static 'script.js' %}"></script>
-    <style>
-      .table-display {
-        position: relative;
-        top: 12rem;
-      }
-      .header-upload {
-        width: 80%;
-        margin: 0 auto;
-      }
-
-      .upload-title {
-        color: #fff; /* White text color */
-        display: flex;
-        justify-content: center;
-        margin-bottom: 15px;
-        font-family: "Courier New", Courier, monospace;
-      }
-
-      table {
-        width: 90%;
-        border-collapse: collapse;
-        margin-top: 10px;
-        background-color: #fff; /* Background color for the table */
-      }
-
-      th,
-      td {
-        padding: 12px;
-        border: 1px solid #ddd;
-      }
-
-      th {
-        background-color: #f4f4f4;
-      }
-
-      tbody tr:nth-child(even) {
-        background-color: #f9f9f9;
-      }
-
-      tbody tr:hover {
-        background-color: #e0e0e0;
-      }
-
-      tbody tr:hover td {
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
-
-      .dropdown-df {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        top: 15rem;
-        color: #fff;
-      }
-    </style>
   </head>
-  <body style="background-color: rgba(35, 39, 42)">
-    <div class="header">
+  <body style="background-color: rgb(234, 222, 233)">
+    <div
+      class="header"
+      style="
+        font-family: 'Courier New', Courier, monospace;
+        position: fixed;
+        height: 20px;
+        width: calc(90% - 10px);
+        background-color: rgba(5, 12, 18, 0.85);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        padding: 50px;
+        top: 20px;
+        left: 5%;
+        border-radius: 30px;
+        backdrop-filter: blur(5px);
+        z-index: 1;
+      "
+    >
       <h1>Automata</h1>
     </div>
 
     {% comment %} {% endcomment %}
-    <form method="post" action="{% url 'process_parameter_form' %}">
+    <form
+      method="post"
+      action="{% url 'process_parameter_form' %}"
+      style="top: 300px; position: relative; left: 100px"
+    >
       {% csrf_token %}
       <label for="numParameters">Number of Parameters:</label>
       <input
@@ -150,12 +117,73 @@
       }
     </script>
 
-    <footer class="footer">
-      <div class="waves">
-        <div class="wave" id="wave1"></div>
-        <div class="wave" id="wave2"></div>
-        <div class="wave" id="wave3"></div>
-        <div class="wave" id="wave4"></div>
+    <footer
+      class="footer"
+      style="
+        position: absolute;
+        width: 100%;
+        background: #3586ff;
+        min-height: 100px;
+        padding: 20px 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        top: 100%;
+      "
+    >
+      <div
+        class="waves"
+        style="
+          position: absolute;
+          top: -100px;
+          left: 0;
+          width: 100%;
+          height: 100px;
+          background: url('https://i.ibb.co/wQZVxxk/wave.png');
+          background-size: 1000px 100px;
+        "
+      >
+        <div
+          class="wave"
+          id="wave1"
+          style="
+            z-index: 1000;
+            opacity: 1;
+            bottom: 0;
+            animation: animateWaves 4s linear infinite;
+          "
+        ></div>
+        <div
+          class="wave"
+          id="wave2"
+          style="
+            z-index: 999;
+            opacity: 0.5;
+            bottom: 10px;
+            animation: animate 4s linear infinite !important;
+          "
+        ></div>
+        <div
+          class="wave"
+          id="wave3"
+          style="
+            z-index: 1000;
+            opacity: 0.2;
+            bottom: 15px;
+            animation: animateWaves 3s linear infinite;
+          "
+        ></div>
+        <div
+          class="wave"
+          id="wave4"
+          style="
+            z-index: 999;
+            opacity: 0.7;
+            bottom: 20px;
+            animation: animate 3s linear infinite;
+          "
+        ></div>
       </div>
       <ul class="social-icon">
         <li class="social-icon_item">
@@ -185,7 +213,16 @@
         <li class="menu_item"><a class="menu_link" href="#">Services</a></li>
         <li class="menu_item"><a class="menu_link" href="#">Team</a></li>
       </ul>
-      <p>&copy;2024 Team Reptiles of Roorkela | All Rights Reserved</p>
+      <p
+        style="
+          color: #fff;
+          margin: 15px 0 10px 0;
+          font-size: 1rem;
+          font-weight: 300;
+        "
+      >
+        &copy;2024 Team Reptiles of Roorkela | All Rights Reserved
+      </p>
     </footer>
   </body>
 </html>

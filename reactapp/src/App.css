@@ -1,13 +1,15 @@
 .bodyy {
   font-size: 52.5%;
-  overflow-x: hidden;
+  /* overflow: hidden; */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
   border: none;
   outline: none;
-  scroll-behavior: smooth;
+  /* position: fixed; */
+  /* scroll-behavior: smooth; */
+  height: 1200px;
   font-family: "Poppins", sans-serif;
   background-color: rgba(35, 39, 42);
 }
@@ -145,7 +147,7 @@ span {
   z-index: -1;
 }
 
-/*images*/
+/* /images/ */
 
 /* .figure1 {
     background: #f3f3f3;
@@ -412,7 +414,7 @@ span {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  top: 230%;
+  top: 150%;
 }
 
 .social-icon,

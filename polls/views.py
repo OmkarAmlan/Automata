@@ -99,4 +99,4 @@ def process_parameter_form(request):
             'session_value': session_value,
         }
         request.session['params'] = parameter_data
-        return render(request,'gateway.html',context)
+        return HttpResponse(parameter_data)

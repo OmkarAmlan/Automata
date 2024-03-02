@@ -20,7 +20,10 @@ const App = () => {
   }, []);
 
   const htmlFile = `
-    <div class="card2">
+    <div class="card2" style="
+    top:10px;
+    bottom: 10px;
+    left: 650px;">
       <img src="" alt="Card Image" class="card-image" />
       <h2 class="card-title">Card Title</h2>
       <p class="card-description">This is a sample card description.</p>
@@ -38,7 +41,7 @@ const App = () => {
           id="csv-dropzone"
           class="csv-button"
         />
-        <button type="submit">Upload CSV</button>
+        <button type="submit">Upload PKL</button>
       </form>
     </div>
   `;
@@ -63,8 +66,8 @@ const App = () => {
               its API endpoint, Automata enables seamless integration into your
               existing systems and workflows, further enhancing its utility and
               versatility. With Automata, you gain the ability to boost
-              productivity and drive impactful outcomes across
-              your organization.
+              productivity and drive impactful outcomes across your
+              organization.
             </p>
           </div>
           <div class="home-img">
