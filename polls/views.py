@@ -120,9 +120,9 @@ def process_parameter_form(request):
 
         # Create Gradio Interface
         interface = gr.Interface(
-            fn=loaded_model.predict,
+            fn=lambda *inputs: loaded_model.predict([inputs]),
             inputs=input_components,
-            outputs="text", 
+            outputs="number", 
             # Replace with your actual output type
         )
 
