@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { useState, useEffect } from "react";
 import robo from "./assets/IMG_2740-ai-brush-removebg-dfi3huke.png";
+// import ran from "./assets/random.webp";
 const App = () => {
   const [csrfToken, setCsrfToken] = useState("");
 
@@ -23,25 +24,30 @@ const App = () => {
     <div class="card2" style="
     top:10px;
     bottom: 10px;
-    left: 650px;">
-      <img src="" alt="Card Image" class="card-image" />
-      <h2 class="card-title">Card Title</h2>
-      <p class="card-description">This is a sample card description.</p>
+    left: 450px;">
+      <h2 class="card-title">Upload .pkl File</h2>
+      <p class="card-description"></p>
       <br />
       <form
         method="post"
         action="/handle_pkl_upload/"
         enctype="multipart/form-data"
       >
-        <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}" />
+        <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}"
+        sttle="background-color: #04AA6D;
+        border: none;
+        color: white;"/>
         <input
           type="file"
           name="pklFile"
           accept=".pkl"
           id="csv-dropzone"
           class="csv-button"
+          style="margin-left: 100px; margin-top:10px;"
         />
-        <button type="submit">Upload PKL</button>
+        <div class="buttons-container" style="margin-left: 150px; margin-top: 10px;">
+        <button type="submit" class="button-arounder">Upload PKL</button>
+        </div>
       </form>
     </div>
   `;
@@ -53,27 +59,22 @@ const App = () => {
       <div class="area">
         <div class="home" id="home">
           <div class="home-content">
-            <h3>Hello</h3>
-            <h1>Automata</h1>
+            <h3>Unlock the power of structured data</h3>
+            <h1>AUTOMATA</h1>
             <p>
-              Automata revolutionizes your workflow by providing the tools to
-              effortlessly construct and implement state-of-the-art machine
-              learning models tailored for structured data. With this innovative
-              platform, you can expedite the development process while ensuring
-              scalability and efficiency. By leveraging Automata, you unlock the
-              potential to rapidly iterate through model iterations, optimize
-              performance, and seamlessly deploy solutions. Additionally, with
-              its API endpoint, Automata enables seamless integration into your
-              existing systems and workflows, further enhancing its utility and
-              versatility. With Automata, you gain the ability to boost
-              productivity and drive impactful outcomes across your
-              organization.
+              With Automata at your disposal, you gain the ability to
+              effortlessly introduce and showcase your groundbreaking machine
+              learning advancements, fostering seamless interaction and
+              utilization among individuals from all backgrounds and expertise
+              levels.
             </p>
           </div>
           <div class="home-img">
             <img src={robo} alt="" />
           </div>
           <ul class="circles">
+            <li></li>
+            <li></li>
             <li></li>
             <li></li>
             <li></li>

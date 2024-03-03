@@ -14,13 +14,65 @@
     <!-- <link rel="stylesheet" href="style.css" /> -->
     <script src="{% static 'script.js' %}"></script>
   </head>
-  <body style="background-color: rgb(234, 222, 233)">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Koulen&family=Lato&family=Nunito&family=Playfair+Display:ital@1&family=Prata&family=Raleway:ital,wght@1,100&family=Roboto&family=Roboto+Condensed&family=Teko&display=swap");
+
+    .btn {
+      font-family: Lato;
+      font-weight: 0;
+      font-size: 14px;
+      color: #fff;
+      background: linear-gradient(45deg, #0066cc 0%, #023e8a 100%);
+      padding: 10px 30px;
+      border: solid #0066cc 2px;
+      box-shadow: none;
+      border-radius: 9px;
+      transition: 1000ms;
+      transform: translateY(0);
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transition: 1000ms;
+      padding: 10px 50px;
+      transform: translateY(-0px);
+      background: linear-gradient(45deg, #0066cc 0%, #023e8a 100%);
+      color: #ebeff4;
+      border: solid 2px #0066cc;
+    }
+    @font-face {
+      font-family: MinecrafterReg;
+      src: url(MinecrafterReg.ttf);
+      font-weight: 400;
+    }
+    .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: rgb(65, 65, 196);
+      color: white;
+      text-align: center;
+    }
+  </style>
+
+  <body
+    style="
+      background-color: rgb(234, 222, 233);
+      overflow: hidden;
+      margin-left: 500px;
+    "
+  >
     <div
       class="header"
       style="
         font-family: 'Courier New', Courier, monospace;
         position: fixed;
         height: 20px;
+        width: 500px;
         width: calc(90% - 10px);
         background-color: rgba(5, 12, 18, 0.85);
         color: #fff;
@@ -44,7 +96,15 @@
       style="top: 300px; position: relative; left: 100px"
     >
       {% csrf_token %}
-      <label for="numParameters">Number of Parameters:</label>
+      <label
+        for="numParameters"
+        style="
+          text-align: center;
+          font-family: MinecrafterReg;
+          font-size: large;
+        "
+        >Number of Parameters:</label
+      >
       <input
         type="number"
         id="numParameters"
@@ -52,11 +112,20 @@
         min="1"
         required
       />
-      <button type="button" onclick="generateParameterInputs()">Next</button>
+      <button
+        type="button"
+        onclick="generateParameterInputs()"
+        class="btn"
+        style="margin-left: 370px"
+      >
+        Next
+      </button>
 
       <div id="parameterInputs"></div>
 
-      <button type="submit">Submit</button>
+      <button type="submit" class="btn" style="margin-left: 150px">
+        Submit
+      </button>
     </form>
 
     {% comment %} {% endcomment %}
@@ -116,8 +185,10 @@
         }
       }
     </script>
-
-    <footer
+    <div class="footer">
+      <p>Reptiles of Roorkela</p>
+    </div>
+    <!-- <footer
       class="footer"
       style="
         position: absolute;
@@ -207,12 +278,6 @@
           </a>
         </li>
       </ul>
-      <ul class="menu">
-        <li class="menu_item"><a class="menu_link" href="#">Home</a></li>
-        <li class="menu_item"><a class="menu_link" href="#">About</a></li>
-        <li class="menu_item"><a class="menu_link" href="#">Services</a></li>
-        <li class="menu_item"><a class="menu_link" href="#">Team</a></li>
-      </ul>
       <p
         style="
           color: #fff;
@@ -223,6 +288,6 @@
       >
         &copy;2024 Team Reptiles of Roorkela | All Rights Reserved
       </p>
-    </footer>
+    </footer> -->
   </body>
 </html>
