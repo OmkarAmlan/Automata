@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Gradio Interface{% endblock %}
+
+{% block content %}
+    <div id="gradio-interface">
+        {{ gr_html | safe }}
+    </div>
+{% endblock %}
