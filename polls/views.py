@@ -15,6 +15,8 @@ import uvicorn
 from pydantic import BaseModel
 import gradio as gr
 from django.middleware.csrf import get_token
+import concurrent.futures
+
 
 def get_csrf_token(request):
     csrf_token=get_token(request)
@@ -81,62 +83,54 @@ def handle_pkl_upload(request):
             if os.path.exists(temp_file_path):
                 os.remove(temp_file_path)
 
-def out():
-    pass
+import pickle
+import gradio as gr
+import concurrent.futures
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+
+def launch_gradio_interface(interface):
+    interface_url = interface.launch(share=True)
+    return interface_url
 
 def process_parameter_form(request):
-    session_value = request.session.get('type', None)
-    
     if request.method == 'POST':
-        # Get the number of parameters from the form
-        num_parameters = int(request.POST.get('numParameters', 0))
-
         # Extract parameter names and types from the form data
+        num_parameters = int(request.POST.get('numParameters', 0))
         parameter_data = []
         for i in range(1, num_parameters + 1):
             param_name = request.POST.get(f'parameter{i}_name', '')
             param_type = request.POST.get(f'parameter{i}_type', '')
             parameter_data.append({'name': param_name, 'type': param_type})
 
-        # Process the extracted data as needed
         request.session['params'] = parameter_data
 
-        # Create Gradio Interface based on input components
+        # Create Gradio Input Components
         input_components = []
         for param in parameter_data:
             if param['type'] == 'string':
-                input_components.append(gr.Text(label=param['name']))
+                input_components.append(gr.Textbox(label=param['name']))
             elif param['type'] == 'int':
                 input_components.append(gr.Number(label=param['name']))
             else:
                 input_components.append(gr.Number(label=param['name']))
-                
+
+        # Load the model
         loaded_model = pickle.load(open('static/models/your_model.pkl', 'rb'))
 
         # Create Gradio Interface
         interface = gr.Interface(
-            fn=loaded_model.predict([input_components]),
+            fn=lambda *inputs: loaded_model.predict([inputs]),
             inputs=input_components,
-            outputs="label",  # Replace with your actual output type
+            outputs="number", 
+            # Replace with your actual output type
         )
 
-        # Share the Gradio interface and get the public URL
-        interface_url = interface.launch(share=True)
+        # Use concurrent.futures to run launch_gradio_interface in a separate thread
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            interface_url = executor.submit(launch_gradio_interface, interface).result()
 
-        # Save the Gradio interface URL in the session
-        request.session['gr_interface_url'] = interface_url
-
-        # Redirect to the Gradio interface page
-        return redirect('gradio_interface')
+        # Redirect to the public Gradio interface URL
+        return redirect(interface_url)
 
     return HttpResponse('Invalid request method')
-
-def gradio_interface(request):
-    # Retrieve the Gradio interface URL from the session
-    gr_interface_url = request.session.get('gr_interface_url')
-
-    if gr_interface_url:
-        # Render the Django template with the Gradio interface URL
-        return render(request, 'gradio_template.html', {'gr_interface_url': gr_interface_url})
-
-    return HttpResponse('Gradio interface URL not found in session.')
